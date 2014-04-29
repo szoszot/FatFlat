@@ -1,0 +1,75 @@
+﻿@model FatFlat.Models.Comment
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Comment</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IDkomentarz)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDkomentarz)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.Imie)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.Imie)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Flat.Miejscowosc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Flat.Miejscowosc)
+    </div>
+
+      <div class="display-label">
+         @Html.DisplayNameFor(model => model.Flat.Ulica)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Flat.Ulica)
+    </div>
+      <div class="display-label">
+         @Html.DisplayNameFor(model => model.Flat.NrBudynku)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Flat.NrBudynku)
+    </div>
+      <div class="display-label">
+         @Html.DisplayNameFor(model => model.Flat.NrMieszkania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Flat.NrMieszkania)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ocena)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ocena)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Tresc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Tresc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Data)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new {  id=Model.IDkomentarz  }) |
+    @Html.ActionLink("Powrót do listy", "Index")
+</p>

@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FlatDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="FlatDatabaseModelStoreContainer">
+          <EntitySet Name="Comment" EntityType="FlatDatabaseModel.Store.Comment" store:Type="Tables" />
+          <EntitySet Name="Flat" EntityType="FlatDatabaseModel.Store.Flat" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="FlatDatabaseModel.Store.User" store:Type="Tables" />
+          <AssociationSet Name="Komentarz do mieszkania" Association="FlatDatabaseModel.Store.Komentarz do mieszkania">
+            <End Role="Flat" EntitySet="Flat" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="Komentarz od uzytkownika" Association="FlatDatabaseModel.Store.Komentarz od uzytkownika">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="IDkomentarz" />
+          </Key>
+          <Property Name="IDkomentarz" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDuzytkownik" Type="int" Nullable="false" />
+          <Property Name="IDmieszkanie" Type="int" Nullable="false" />
+          <Property Name="Ocena" Type="numeric" Precision="10" />
+          <Property Name="Tresc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flat">
+          <Key>
+            <PropertyRef Name="IDmieszkanie" />
+          </Key>
+          <Property Name="IDmieszkanie" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Miejscowosc" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Ulica" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="NrBudynku" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="NrMieszkania" Type="nvarchar" MaxLength="100" />
+          <Property Name="DataDodania" Type="datetime" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Zdjecie" Type="image" />
+          <Property Name="Ocena" Type="numeric" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IDuzytkownika" />
+          </Key>
+          <Property Name="IDuzytkownika" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Nazwisko" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="DataUrodzenia" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="Komentarz do mieszkania">
+          <End Role="Flat" Type="FlatDatabaseModel.Store.Flat" Multiplicity="1" />
+          <End Role="Comment" Type="FlatDatabaseModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flat">
+              <PropertyRef Name="IDmieszkanie" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="IDmieszkanie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Komentarz od uzytkownika">
+          <End Role="User" Type="FlatDatabaseModel.Store.User" Multiplicity="1" />
+          <End Role="Comment" Type="FlatDatabaseModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IDuzytkownika" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="IDuzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FlatDatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FlatDatabaseEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Comment" EntityType="FlatDatabaseModel.Comment" />
+          <EntitySet Name="Flat" EntityType="FlatDatabaseModel.Flat" />
+          <EntitySet Name="User" EntityType="FlatDatabaseModel.User" />
+          <AssociationSet Name="Komentarz_do_mieszkania" Association="FlatDatabaseModel.Komentarz_do_mieszkania">
+            <End Role="Flat" EntitySet="Flat" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="Komentarz_od_uzytkownika" Association="FlatDatabaseModel.Komentarz_od_uzytkownika">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="IDkomentarz" />
+          </Key>
+          <Property Name="IDkomentarz" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IDuzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="IDmieszkanie" Type="Int32" Nullable="false" />
+          <Property Name="Ocena" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Tresc" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Flat" Relationship="FlatDatabaseModel.Komentarz_do_mieszkania" FromRole="Comment" ToRole="Flat" />
+          <NavigationProperty Name="User" Relationship="FlatDatabaseModel.Komentarz_od_uzytkownika" FromRole="Comment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Flat">
+          <Key>
+            <PropertyRef Name="IDmieszkanie" />
+          </Key>
+          <Property Name="IDmieszkanie" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Miejscowosc" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Ulica" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="NrBudynku" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="NrMieszkania" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DataDodania" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Opis" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Zdjecie" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Ocena" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Comment" Relationship="FlatDatabaseModel.Komentarz_do_mieszkania" FromRole="Flat" ToRole="Comment" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IDuzytkownika" />
+          </Key>
+          <Property Name="IDuzytkownika" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DataUrodzenia" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Comment" Relationship="FlatDatabaseModel.Komentarz_od_uzytkownika" FromRole="User" ToRole="Comment" />
+        </EntityType>
+        <Association Name="Komentarz_do_mieszkania">
+          <End Role="Flat" Type="FlatDatabaseModel.Flat" Multiplicity="1" />
+          <End Role="Comment" Type="FlatDatabaseModel.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flat">
+              <PropertyRef Name="IDmieszkanie" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="IDmieszkanie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Komentarz_od_uzytkownika">
+          <End Role="User" Type="FlatDatabaseModel.User" Multiplicity="1" />
+          <End Role="Comment" Type="FlatDatabaseModel.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IDuzytkownika" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="IDuzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FlatDatabaseModelStoreContainer" CdmEntityContainer="FlatDatabaseEntities">
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="FlatDatabaseModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="IDkomentarz" ColumnName="IDkomentarz" />
+                <ScalarProperty Name="IDuzytkownik" ColumnName="IDuzytkownik" />
+                <ScalarProperty Name="IDmieszkanie" ColumnName="IDmieszkanie" />
+                <ScalarProperty Name="Ocena" ColumnName="Ocena" />
+                <ScalarProperty Name="Tresc" ColumnName="Tresc" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flat">
+            <EntityTypeMapping TypeName="FlatDatabaseModel.Flat">
+              <MappingFragment StoreEntitySet="Flat">
+                <ScalarProperty Name="IDmieszkanie" ColumnName="IDmieszkanie" />
+                <ScalarProperty Name="Miejscowosc" ColumnName="Miejscowosc" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="NrBudynku" ColumnName="NrBudynku" />
+                <ScalarProperty Name="NrMieszkania" ColumnName="NrMieszkania" />
+                <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Zdjecie" ColumnName="Zdjecie" />
+                <ScalarProperty Name="Ocena" ColumnName="Ocena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="FlatDatabaseModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IDuzytkownika" ColumnName="IDuzytkownika" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

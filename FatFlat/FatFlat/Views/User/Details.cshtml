@@ -1,0 +1,50 @@
+﻿@model FatFlat.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IDuzytkownika)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDuzytkownika)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Imie)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Imie)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nazwisko)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nazwisko)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataUrodzenia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataUrodzenia)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Powrót do listy", "Index")
+</p>

@@ -1,0 +1,60 @@
+﻿@model FatFlat.Models.Comment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Comment</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IDkomentarz)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDkomentarz)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.Imie)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.Imie)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Flat.Miejscowosc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Flat.Miejscowosc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ocena)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ocena)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Tresc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Tresc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Data)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Powrót do listy", "Index")
+    </p>
+}

@@ -1,0 +1,71 @@
+﻿@model FatFlat.Models.Flat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Flat</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IDmieszkanie)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDmieszkanie)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Miejscowosc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Miejscowosc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ulica)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ulica)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NrBudynku)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NrBudynku)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NrMieszkania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NrMieszkania)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataDodania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataDodania)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Opis)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Opis)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ocena)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ocena)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Powrót do listy", "Index")
+</p>
