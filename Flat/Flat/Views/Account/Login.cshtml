@@ -1,0 +1,45 @@
+﻿@model Flat.Models.LoginModel
+
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+<body>
+
+<section id="loginForm">
+<h2>Użyj instniejącego konta aby się zalogować.</h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Podaj dane logowania</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>
+        </ol>
+        <input type="submit" value="Logowanie" />
+    </fieldset>
+    <p>
+        @Html.ActionLink("Zarejestruj się", "Register") jeśli jeszcze nie posiadasz konta.
+    </p>
+}
+</section>
+
+<section class="social" id="socialLoginForm">
+    <h2>Użyj innego konta aby się zalogować.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+</body>

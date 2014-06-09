@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+   <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        <link href = "~/Content/style.css" type ="text/css" rel="stylesheet"/>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+       @Scripts.Render("~/bundles/knockout")
+    </head>
+<body>
+
+<div id="bg1">
+	<div id="header">
+        <h1> Fat flat</h1>
+		<h2>...czyli mieszkanie na wypasie</h2> 
+	</div>
+</div>
+<!-- end #bg1 -->
+<div id="bg2">
+	<div id="header2">
+		<div id="menu">
+			<ul>
+				<li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
+                            <li>@Html.ActionLink("O nas", "About", "Home")</li>
+                            <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+        <div id="search">
+			<form method="get" action="#">
+				<fieldset>
+				<input type="text" name="q" value="search keywords" id="q" class="text" />
+				<input type="submit" value="Search" class="button" />
+				</fieldset>
+			</form>
+		</div>
+		<!-- end #search -->
+     </div>
+    	<!-- end #header2 -->
+             
+
+		
+	
+
+</div>
+<!-- end #bg2 -->
+<div id="bg3">
+	<div id="bg4">
+		<div id="bg5">
+			<div id="page">
+				<div id="content">
+					<div class="post">
+						
+						
+						
+                            @RenderSection("featured", required: false)
+            <section class="entry">
+                @RenderBody()
+            </section>
+
+
+						
+						@*<div class="meta">
+							<p class="credit">Posted by <a href="#">Someone</a> on October 14, 2008</p>
+							<p class="links"><a href="#" class="comments">Comments (18)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" class="more">Read more</a></p>
+						</div>*@
+					</div>
+					
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<ul>
+                        <li>
+							<h2>Menu</h2>
+							<ul>
+								<li>@Html.ActionLink("Zaloguj", "Login", "Account")</li>
+                                <li>@Html.ActionLink("Twoje konto", "Manage", "Account")</li>
+                                <li>@Html.ActionLink("Załóż konto", "Register", "Account")</li>
+								<li>@Html.ActionLink("Dodaj mieszkanie", "Create", "Mieszkanie")</li>
+								<li><a href="#">Dodaj opinię</a></li>
+								<li>@Html.ActionLink("O twórcach", "About", "Home")</li>
+								<li><a href="#">Regulamin</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<h2>Kontakt</h2>
+							<p>Zapraszamy do stosownej zakładki <a href="#">Więcej&hellip;</a></p>
+						</li>
+					
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both; height: 40px;">&nbsp;</div>
+			</div>
+			<!-- end #page -->
+		</div>
+	</div>
+</div>
+<!-- end #bg3 -->
+
+<!-- end #footer -->
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿@model Flat.Models.Mieszkanie
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Mieszkanie</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IDmieszkanie)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDmieszkanie)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Miejscowosc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Miejscowosc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ulica)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ulica)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NrBudynku)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NrBudynku)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NrMieszkania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NrMieszkania)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataDodania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataDodania)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Opis)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Opis)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ocena)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ocena)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

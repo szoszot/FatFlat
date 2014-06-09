@@ -1,0 +1,88 @@
+﻿@model Flat.Models.Mieszkanie
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Mieszkanie</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IDmieszkanie)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IDmieszkanie)
+            @Html.ValidationMessageFor(model => model.IDmieszkanie)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Miejscowosc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Miejscowosc)
+            @Html.ValidationMessageFor(model => model.Miejscowosc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ulica)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ulica)
+            @Html.ValidationMessageFor(model => model.Ulica)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NrBudynku)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NrBudynku)
+            @Html.ValidationMessageFor(model => model.NrBudynku)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NrMieszkania)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NrMieszkania)
+            @Html.ValidationMessageFor(model => model.NrMieszkania)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataDodania)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataDodania)
+            @Html.ValidationMessageFor(model => model.DataDodania)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Opis)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Opis)
+            @Html.ValidationMessageFor(model => model.Opis)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ocena)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ocena)
+            @Html.ValidationMessageFor(model => model.Ocena)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Powrót", "Index")
+</div>
+
